@@ -2,6 +2,8 @@ import java.util.*;
 // random DNA generator: https://faculty.ucr.edu/~mmaduro/random.htm
 // good sequence - CAACCGGGGGGTGGGAATCCGTCACATATGAGAAGGTATTTGCTCGATAATCAATACTCCAGGCATCTAACTTTTCCCACTGCCTTAAGCCGGCTTGCCCTTTCTGCCTGTAGATCCATAGGACTCGTGCCAACGCGCAGGCATAGTTCGAGGAGAAATATCCGGGGCCAAAGACAACCAGCATCTCGGGTCTTGCCCAA
 
+import packages.RnaAndProtein;
+
 public class DnaReader {
 	public static void main(String[] args) {
 		System.out.println("Is your DNA sequence of the template or coding strand?"
@@ -17,17 +19,16 @@ public class DnaReader {
 		
 		RnaAndProtein run = new RnaAndProtein(sequence, length);
 		
-	//transcribe
 		if (seqSource.equalsIgnoreCase("template")){
-			System.out.println("\nYour RNA sequence is " + run.transcribe()); 
+			System.out.println("\nYour RNA sequence is " + run.transcribe());
+			System.out.println("Your protein sequence is " + run.translation());
 		}
 		else if (seqSource.equalsIgnoreCase("coding")) {
 			run.flip();
 			System.out.println("\nYour RNA sequence is " + run.transcribe());
+			System.out.println("Your protein sequence is " + run.translation());
 		}
-		
-	//translate	
-		if (seqSource.equalsIgnoreCase("not sure")) {
+		else {
 			System.out.println("\nIf your sequence is the template strand...");
 			System.out.println("Your RNA sequence is "+ run.transcribe()); 
 			System.out.println("And your protein sequence is " + run.translation());
@@ -36,9 +37,6 @@ public class DnaReader {
 			System.out.println("\nOr if your sequence is the coding strand...");
 			System.out.println("Your RNA sequence is "+ run.transcribe()); 
 			System.out.println("And your protein sequence is " + run.translation());
-		}
-		else {
-			System.out.println("Your protein sequence is " + run.translation());
 		}
 	}
 }
