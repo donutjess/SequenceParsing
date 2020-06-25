@@ -1,3 +1,4 @@
+package packages;
 		
 public class RnaAndProtein {
 	String sequence;
